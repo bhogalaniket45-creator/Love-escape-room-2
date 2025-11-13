@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ideal Date Escape Room 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&family=Dancing+Script:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-pink: #ff69b4;
+            --secondary-pink: #ffb6c1;
+            --coral: #ff9999;
+            --peach: #ffcc99;
+            --gold: #ffd700;
+            --champagne: #f4e5c2;
+            --mint: #98d8c8;
+            --emerald: #3cb371;
+            --purple: #c77dff;
+            --lavender: #e0aaff;
+            --sunset-orange: #ff8c42;
+            --dark-text: #2d2d2d;
+            --light-text: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #ff6b9d 75%, #feca57 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            color: var(--dark-text);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating Hearts Background */
+        .floating-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: -50px;
+            font-size: 20px;
+            opacity: 0.6;
+            animation: floatUp 10s infinite ease-in;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.6;
+            }
+            90% {
+                opacity: 0.6;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: fixed;
+            pointer-events: none;
+            font-size: 12px;
+            animation: sparkleAnim 1s ease-out forwards;
+            z-index: 9999;
+        }
+
+        @keyframes sparkleAnim {
+            0% {
+                transform: scale(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.5) rotate(180deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .room-container {
+            max-width: 700px;
+            width: 95%;
+            margin: 20px auto;
+            padding: 40px 30px;
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), 0 0 40px rgba(255, 105, 180, 0.2);
+            position: relative;
+            z-index: 10;
+            animation: fadeInScale 0.8s ease-out;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        /* Header Styles */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8em;
+            background: linear-gradient(135deg, var(--primary-pink), var(--gold), var(--coral));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 4px 20px rgba(255, 105, 180, 0.3);
+            animation: textGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes textGlow {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(255, 105, 180, 0.5)); }
+            50% { filter: drop-shadow(0 0 20px rgba(255, 105, 180, 0.8)); }
+        }
+
+        .subtitle {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            color: var(--light-text);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            margin-bottom: 10px;
+        }
+
+        .dedication {
+            font-size: 0.95em;
+            color: var(--champagne);
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Progress Indicator */
+        .progress-tracker {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            padding: 0 20px;
+        }
+
+        .progress-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .progress-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-weight: 600;
+            color: var(--light-text);
+            transition: all 0.4s ease;
+            font-size: 1.2em;
+        }
+
+        .progress-step.active .progress-circle {
+            background: linear-gradient(135deg, var(--primary-pink), var(--gold));
+            border-color: var(--gold);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.6);
+            transform: scale(1.1);
+        }
+
+        .progress-step.completed .progress-circle {
+            background: var(--emerald);
+            border-color: var(--mint);
+        }
+
+        .progress-label {
+            font-size: 0.75em;
+            color: var(--light-text);
+            font-weight: 500;
+        }
+
+        .progress-line {
+            position: absolute;
+            top: 25px;
+            left: 50%;
+            width: 100%;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            z-index: -1;
+        }
+
+        .progress-step:last-child .progress-line {
+            display: none;
+        }
+
+        /* Puzzle Section */
+        .puzzle-section {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .puzzle-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .puzzle-section:hover::before {
+            opacity: 1;
+        }
+
+        .puzzle-section.disabled {
+            opacity: 0.6;
+            pointer-events: none;
+            filter: grayscale(0.5);
+        }
+
+        .puzzle-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 20px;
+            padding: 10px;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .puzzle-header:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .puzzle-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5em;
+            color: var(--dark-text);
+            text-shadow: 0 2px 4px rgba(255, 255, 255, 0.5);
+            margin: 0;
+        }
+
+        .toggle-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--coral));
+            border: none;
+            color: white;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toggle-btn:hover {
+            transform: scale(1.1) rotate(90deg);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+
+        .puzzle-section.active .toggle-btn {
+            transform: rotate(45deg);
+            background: linear-gradient(135deg, var(--emerald), var(--mint));
+        }
+
+        .puzzle-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .puzzle-section.active .puzzle-content {
+            max-height: 1200px;
+        }
+
+        .puzzle-description {
+            color: var(--dark-text);
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .hint {
+            background: rgba(255, 215, 0, 0.2);
+            border-left: 4px solid var(--gold);
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-size: 0.95em;
+            color: var(--dark-text);
+            font-style: italic;
+        }
+
+        /* Beach View Scene - Enhanced */
+        .beach-scene {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            cursor: pointer;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .beach-scene:hover {
+            transform: scale(1.02);
+        }
+
+        .sky {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: linear-gradient(to bottom, #ff6b9d 0%, #feca57 50%, #ffa07a 100%);
+        }
+
+        .sun {
+            position: absolute;
+            top: 20%;
+            right: 15%;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #fff5e1 0%, #ffd700 100%);
+            box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+            animation: sunPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(255, 215, 0, 0.8); }
+            50% { transform: scale(1.1); box-shadow: 0 0 50px rgba(255, 215, 0, 1); }
+        }
+
+        .ocean {
+            position: absolute;
+            top: 60%;
+            left: 0;
+            width: 100%;
+            height: 25%;
+            background: linear-gradient(to bottom, #4682b4 0%, #1e90ff 100%);
+            overflow: hidden;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 200%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120'%3E%3Cpath d='M0,50 Q300,10 600,50 T1200,50 L1200,120 L0,120 Z' fill='%235fa3d0' opacity='0.5'/%3E%3C/svg%3E");
+            background-size: 600px 100%;
+            animation: waveMove 8s linear infinite;
+        }
+
+        @keyframes waveMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-600px); }
+        }
+
+        .sand {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 15%;
+            background: linear-gradient(to bottom, #f4a460 0%, #daa520 100%);
+        }
+
+        .seagull {
+            position: absolute;
+            font-size: 16px;
+            animation: seagullFly 12s linear infinite;
+        }
+
+        @keyframes seagullFly {
+            0% { left: -5%; top: 15%; }
+            100% { left: 105%; top: 25%; }
+        }
+
+        .hidden-code {
+            position: absolute;
+            top: 70%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 2em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.1);
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+            transition: all 0.5s ease;
+            letter-spacing: 8px;
+            font-family: 'Courier New', monospace;
+            pointer-events: none;
+        }
+
+        .beach-scene:hover .hidden-code,
+        .beach-scene:active .hidden-code {
+            color: rgba(255, 255, 255, 0.95);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 255, 255, 0.6);
+            transform: translate(-50%, -50%) scale(1.2);
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            transform: scale(0);
+            animation: rippleEffect 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes rippleEffect {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Decrypt Message Styles */
+        .cipher-note {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffeaa7 100%);
+            border: 2px solid #daa520;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
+            position: relative;
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            color: #8b4513;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .cipher-note::before {
+            content: '📜';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+        }
+
+        .decrypted-message {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            border: 2px solid var(--emerald);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            font-size: 1.1em;
+            color: var(--dark-text);
+            text-align: center;
+            animation: messageReveal 0.8s ease-out;
+            box-shadow: 0 4px 20px rgba(60, 179, 113, 0.3);
+        }
+
+        @keyframes messageReveal {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .pin-box {
+            background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+            border: 3px solid var(--gold);
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            text-align: center;
+            box-shadow: 0 8px 30px rgba(255, 215, 0, 0.4), inset 0 2px 5px rgba(255, 255, 255, 0.8);
+            animation: pinReveal 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes pinReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .pin-box .pin-label {
+            font-size: 0.9em;
+            color: var(--dark-text);
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .pin-box .pin-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--primary-pink);
+            letter-spacing: 15px;
+            font-family: 'Courier New', monospace;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Lock Graphic */
+        .lock-container {
+            display: flex;
+            justify-content: center;
+            margin: 25px 0;
+        }
+
+        .lock {
+            width: 100px;
+            height: 120px;
+            position: relative;
+            animation: lockShake 2s ease-in-out infinite;
+        }
+
+        @keyframes lockShake {
+            0%, 100% { transform: rotate(0deg); }
+            25% { transform: rotate(-5deg); }
+            75% { transform: rotate(5deg); }
+        }
+
+        .lock-body {
+            width: 80px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--gold) 0%, #daa520 100%);
+            border-radius: 10px;
+            position: absolute;
+            bottom: 0;
+            left: 10px;
+            box-shadow: 0 4px 15px rgba(218, 165, 32, 0.5), inset 0 2px 5px rgba(255, 255, 255, 0.3);
+        }
+
+        .lock-shackle {
+            width: 50px;
+            height: 50px;
+            border: 8px solid var(--gold);
+            border-radius: 25px 25px 0 0;
+            border-bottom: none;
+            position: absolute;
+            top: 0;
+            left: 25px;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .lock-keyhole {
+            width: 12px;
+            height: 12px;
+            background: #333;
+            border-radius: 50%;
+            position: absolute;
+            bottom: 25px;
+            left: 44px;
+        }
+
+        .lock-keyhole::after {
+            content: '';
+            width: 4px;
+            height: 15px;
+            background: #333;
+            position: absolute;
+            top: 10px;
+            left: 4px;
+        }
+
+        .lock.unlocked .lock-shackle {
+            animation: unlockShackle 0.6s ease-out forwards;
+        }
+
+        @keyframes unlockShackle {
+            to {
+                transform: translateX(30px) rotate(20deg);
+            }
+        }
+
+        /* Input Styles */
+        .input-group {
+            margin: 25px 0;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 12px;
+            font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-text);
+            text-align: center;
+            transition: all 0.3s ease;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-pink);
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.4), 0 0 40px rgba(255, 105, 180, 0.2);
+            transform: scale(1.02);
+        }
+
+        button.submit-btn {
+            width: 100%;
+            padding: 15px 30px;
+            background: linear-gradient(135deg, var(--primary-pink) 0%, var(--coral) 100%);
+            border: none;
+            border-radius: 12px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        button.submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        button.submit-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        button.submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(255, 105, 180, 0.6);
+        }
+
+        button.submit-btn:active {
+            transform: translateY(0);
+        }
+
+        .status-message {
+            margin-top: 15px;
+            font-weight: 500;
+            text-align: center;
+            min-height: 24px;
+            font-size: 1.05em;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .status-message.success {
+            color: var(--emerald);
+            text-shadow: 0 0 10px rgba(60, 179, 113, 0.3);
+        }
+
+        .status-message.error {
+            color: #e74c3c;
+            animation: shake 0.5s ease;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-10px); }
+            75% { transform: translateX(10px); }
+        }
+
+        /* Final Reward */
+        .final-reward {
+            display: none;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.4) 0%, rgba(255, 182, 193, 0.4) 100%);
+            backdrop-filter: blur(15px);
+            border: 3px solid var(--gold);
+            border-radius: 25px;
+            padding: 40px 30px;
+            margin-top: 30px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(255, 215, 0, 0.4);
+            animation: rewardReveal 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        @keyframes rewardReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-5deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .final-reward h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2em;
+            color: var(--primary-pink);
+            margin-bottom: 25px;
+            text-shadow: 0 2px 10px rgba(255, 105, 180, 0.3);
+        }
+
+        .reward-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--dark-text);
+            margin: 15px 0;
+        }
+
+        .highlight-text {
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+
+        .proposal-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            color: var(--gold);
+            margin: 30px 0 20px;
+            font-weight: 700;
+            text-shadow: 0 2px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .signature {
+            font-family: 'Dancing Script', cursive;
+            font-size: 1.3em;
+            color: var(--dark-text);
+            margin-top: 30px;
+            font-style: italic;
+        }
+
+        .typewriter-cursor {
+            display: inline-block;
+            width: 2px;
+            background: var(--dark-text);
+            animation: cursorBlink 0.8s infinite;
+            margin-left: 2px;
+        }
+
+        @keyframes cursorBlink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        /* Confetti */
+        .confetti-piece {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            pointer-events: none;
+            z-index: 9999;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            to {
+                transform: translateY(100vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1.1em;
+            }
+
+            .room-container {
+                padding: 25px 20px;
+            }
+
+            .puzzle-title {
+                font-size: 1.2em;
+            }
+
+            .progress-circle {
+                width: 40px;
+                height: 40px;
+                font-size: 1em;
+            }
+
+            .progress-label {
+                font-size: 0.7em;
+            }
+
+            .beach-scene {
+                height: 200px;
+            }
+
+            .hidden-code {
+                font-size: 1.5em;
+            }
+
+            .cipher-note {
+                font-size: 1.1em;
+            }
+
+            .pin-box .pin-value {
+                font-size: 2em;
+                letter-spacing: 10px;
+            }
+        }
+
+        /* Accessibility */
+        *:focus-visible {
+            outline: 3px solid var(--gold);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Hearts Background -->
+    <div class="floating-hearts" id="floatingHearts"></div>
+
+    <!-- Main Container -->
+    <div class="room-container">
+        <!-- Header -->
+        <div class="header">
+            <h1>💖 The Ideal Date Escape 💖</h1>
+            <p class="subtitle">A Journey Through My Heart</p>
+            <p class="dedication">For a special girl from Karnataka, whom I cherish deeply</p>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-tracker">
+            <div class="progress-step active" id="progress1">
+                <div class="progress-circle">☕</div>
+                <div class="progress-label">Beach Cafe</div>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-step" id="progress2">
+                <div class="progress-circle">💌</div>
+                <div class="progress-label">Message</div>
+                <div class="progress-line"></div>
+            </div>
+            <div class="progress-step" id="progress3">
+                <div class="progress-circle">🔒</div>
+                <div class="progress-label">Marine Drive</div>
+            </div>
+        </div>
+
+        <!-- Puzzle 1: Beach View -->
+        <div class="puzzle-section active" id="puzzle1">
+            <div class="puzzle-header" data-puzzle="1">
+                <h3 class="puzzle-title">☕ The Beach View Cafe</h3>
+                <button class="toggle-btn" aria-label="Toggle puzzle">+</button>
+            </div>
+            <div class="puzzle-content">
+                <p class="puzzle-description">Our dream date begins with a warm coffee overlooking the serene beach. But first, you must discover the secret code hidden in this beautiful view.</p>
+                <div class="hint">💡 Hint: Hover or tap on the ocean waters and watch carefully...</div>
+                
+                <div class="beach-scene" id="beachScene">
+                    <div class="sky"></div>
+                    <div class="sun"></div>
+                    <div class="ocean">
+                        <div class="wave"></div>
+                    </div>
+                    <div class="sand"></div>
+                    <div class="seagull">🕊️</div>
+                    <div class="hidden-code">4 5 2 3 9</div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="puzzle1Input" placeholder="Enter the 5-digit code" maxlength="5" aria-label="Beach code input">
+                    <button class="submit-btn" id="puzzle1Submit">☕ Unlock Coffee Date</button>
+                </div>
+                <div class="status-message" id="puzzle1Status"></div>
+            </div>
+        </div>
+
+        <!-- Puzzle 2: Decrypt Message -->
+        <div class="puzzle-section disabled" id="puzzle2">
+            <div class="puzzle-header" data-puzzle="2">
+                <h3 class="puzzle-title">💌 The Loneliness Message</h3>
+                <button class="toggle-btn" aria-label="Toggle puzzle">+</button>
+            </div>
+            <div class="puzzle-content">
+                <p class="puzzle-description">I've written you a message for those moments when loneliness creeps in. Use the special word from our cafe visit to decrypt it.</p>
+                <div class="hint">💡 Hint: The key is the word revealed in Puzzle 1 (all lowercase)</div>
+                
+                <div class="cipher-note" id="cipherNote">
+                    "Wd ngyt uytfhyi, yktj lfwqny wq ijsqj."
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="puzzle2Input" placeholder="Enter the decryption key" aria-label="Decryption key input">
+                    <button class="submit-btn" id="puzzle2Submit">💌 Decrypt Message</button>
+                </div>
+                <div class="status-message" id="puzzle2Status"></div>
+                <div id="decryptedMessage" style="display: none;"></div>
+                <div id="pinReveal" style="display: none;"></div>
+            </div>
+        </div>
+
+        <!-- Puzzle 3: Final Lock -->
+        <div class="puzzle-section disabled" id="puzzle3">
+            <div class="puzzle-header" data-puzzle="3">
+                <h3 class="puzzle-title">🌊 Marine Drive Sunset</h3>
+                <button class="toggle-btn" aria-label="Toggle puzzle">+</button>
+            </div>
+            <div class="puzzle-content">
+                <p class="puzzle-description">Our final destination awaits - the beautiful Marine Drive at sunset. Enter the PIN from the decrypted message to unlock this magical moment.</p>
+                
+                <div class="lock-container">
+                    <div class="lock" id="heartLock">
+                        <div class="lock-shackle"></div>
+                        <div class="lock-body">
+                            <div class="lock-keyhole"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="puzzle3Input" placeholder="Enter the 4-digit PIN" maxlength="4" aria-label="PIN input">
+                    <button class="submit-btn" id="puzzle3Submit">🗝️ Unlock Our Date</button>
+                </div>
+                <div class="status-message" id="puzzle3Status"></div>
+            </div>
+        </div>
+
+        <!-- Final Reward -->
+        <div class="final-reward" id="finalReward">
+            <h3>🎉 You've Unlocked My Heart! 🎉</h3>
+            <p class="reward-text" id="rewardLine1"></p>
+            <p class="reward-text highlight-text" id="rewardLine2"></p>
+            <p class="reward-text" id="rewardLine3"></p>
+            <p class="reward-text" id="rewardLine4"></p>
+            <p class="proposal-text" id="rewardLine5"></p>
+            <p class="signature">With all my heart,</p>
+            <p class="signature">Your potential boyfriend 💕</p>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
